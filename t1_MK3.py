@@ -12,6 +12,13 @@ operadores_logicos = {
     " then "
 }
 
+class Operador:
+    """Classe para representar uma operacao lógica."""
+    def __init__(self, operador):
+        self.operador = operador  # A string da variável
+        Variavel.variavel_um = None
+        Variavel.variavel_dois = None
+
 class Variavel:
     """Classe para representar uma variável lógica."""
     def __init__(self, variavel):
@@ -61,7 +68,7 @@ variaveis_global = []
 tabela_verdade_global = []
 
 def processar_premissa():
-    global variaveis_global, tabela_verdade_global  # Usar variáveis e tabela verdade globais
+    global variaveis_global, tabela_verdade_global , operadores_globais # Usar variáveis e tabela verdade globais
     premissa = input("Digite a premissa:\n").lower()  # Converte a frase para minúsculas
 
     variaveis_premissa = extrair_variaveis(premissa)  # Extrai variáveis da premissa
@@ -108,6 +115,9 @@ def atualizar_e_imprimir_tabela_verdade():
     tabela_verdade_global = atualiza_tabela_verdade(variaveis_global)  # Atualiza a tabela de verdade
     imprimir_tabela_verdade(tabela_verdade_global)  # Imprime a tabela de verdade
 
+def processa_conclusao():
+    print()
+
 def processar_argumento():
     while True:
         op = input("1 para adicionar uma premissa\n2 para adicionar conclusão\n3 para plotar a tabela de verdade\n0 para sair\nSelecione uma opção: ")
@@ -115,6 +125,8 @@ def processar_argumento():
             break
         elif op == "1":
             processar_premissa()
+        elif op == "2":
+            processa_conclusao()
 
 def main():
     global contador_variaveis
